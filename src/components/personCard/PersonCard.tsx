@@ -29,7 +29,7 @@ export const PersonCard: React.FC<TCharacter> = (CharacterData) => {
                 </div>
                 <div>
                     <p className='text-ram-300'>First seen in:</p>
-                    <p>One Crew Over the Crewcoo's Morty</p>
+                    <p>One Crew Over the Crewcoo Morty</p>
                 </div>
             </div>
         </div>
