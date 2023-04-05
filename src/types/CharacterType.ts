@@ -18,3 +18,13 @@ export type TCharacter = {
     url: string,
     created: string,
 }
+
+export type TAllCharacters = {
+    info: {
+        count: number,
+        pages: number,
+        next: string | null,
+        prev: string | null
+    },
+    results: TCharacter[]
+}
