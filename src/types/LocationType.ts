@@ -1,3 +1,5 @@
+import { TPageInfo } from "./PageInfoType";
+
 export type TLocation = {
     id: number;
     name: string;
@@ -9,11 +11,6 @@ export type TLocation = {
 }
 
 export type TAllLocations = {
-    info: {
-        count: number,
-        pages: number,
-        next: string | null,
-        prev: string | null
-    },
+    info: TPageInfo,
     results: TLocation[]
 }

@@ -32,7 +32,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-    const allCharacters = await CharactersService.GetAllCharacters()
+    const allCharacters = await CharactersService.GetOnePageOfCharacters()
     return {
         paths: allCharacters.results.map(item => ({
             params: {

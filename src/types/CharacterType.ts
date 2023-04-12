@@ -1,3 +1,5 @@
+import { TPageInfo } from "./PageInfoType";
+
 export type TCharacter = {
     id: number,
     name: string,
@@ -19,12 +21,7 @@ export type TCharacter = {
     created: string,
 }
 
-export type TAllCharacters = {
-    info: {
-        count: number,
-        pages: number,
-        next: string | null,
-        prev: string | null
-    },
+export type TOnePageOfCharacters = {
+    info: TPageInfo,
     results: TCharacter[]
 }

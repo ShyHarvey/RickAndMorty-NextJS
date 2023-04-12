@@ -1,12 +1,22 @@
 import { GetStaticProps, NextPage } from 'next'
-import { GetServerSideProps } from "next"
 import Head from "next/head"
 import HomePage from '@/components/screens/home/Home'
 import type { TCharacter } from "@/types/CharacterType"
 import { CharactersService } from "@/services/character.service"
+import { SWRConfig } from 'swr'
+import { LocationsService } from '@/services/location.service'
+import { EpisodesService } from '@/services/episode.service'
+import { TPageInfo } from '@/types/PageInfoType'
 
 
-const Home: NextPage<{ characters: TCharacter[] }> = ({ characters }) => {
+//тип для fallback, за полчаса ничего лучше не придумал, зато не any
+type IndexFallback = {
+  charactersInfo: TPageInfo;
+  locationsInfo: TPageInfo;
+  episodesInfo: TPageInfo;
+}
+
+const Home: NextPage<{ characters: TCharacter[], fallback: IndexFallback }> = ({ characters, fallback }) => {
   return <>
     <Head>
       <title>Home page</title>
@@ -14,17 +24,34 @@ const Home: NextPage<{ characters: TCharacter[] }> = ({ characters }) => {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <HomePage characters={characters} />
+    <SWRConfig value={{ fallback }}>
+      <HomePage characters={characters} />
+    </SWRConfig>
   </>
 }
 
 
-export const getStaticProps: GetStaticProps<{ characters: TCharacter[] }> = async () => {
+export const getStaticProps: GetStaticProps<{ characters: TCharacter[], fallback: IndexFallback }> = async () => {
 
+  //получение 6 рандомных персонажей для главной страницы
   const characters = await CharactersService.GetSixRandomCharacters()
 
+  //создаём fallback значение для серверного рендеринга колличества персонажей в футере
+  const charactersInfo = (await CharactersService.GetOnePageOfCharacters()).info
+
+  //далее то же самое для локаций и эпизодов
+  const locationsInfo = (await LocationsService.GetAllLocations()).info
+  const episodesInfo = (await EpisodesService.GetAllEpisodes()).info
+
   return {
-    props: { characters },
+    props: {
+      characters,
+      fallback: {
+        'charactersInfo': charactersInfo,
+        'locationsInfo': locationsInfo,
+        'episodesInfo': episodesInfo,
+      }
+    },
     revalidate: 600
   }
 }

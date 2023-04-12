@@ -1,5 +1,5 @@
 import { GenerateSixRandomNumbers } from "@/helpers/SixRandomNumbers";
-import { TAllCharacters, TCharacter } from "@/types/CharacterType";
+import { TOnePageOfCharacters, TCharacter } from "@/types/CharacterType";
 import { RickAndMortyApiInstance } from "./axiosInstance";
 
 export const CharactersService = {
@@ -12,8 +12,8 @@ export const CharactersService = {
         const { data } = await RickAndMortyApiInstance.get<TCharacter>(`/character/${id}`)
         return data
     },
-    async GetAllCharacters() {
-        const { data } = await RickAndMortyApiInstance.get<TAllCharacters>(`/character`)
+    async GetOnePageOfCharacters(pageNumber: number = 1) {
+        const { data } = await RickAndMortyApiInstance.get<TOnePageOfCharacters>(`/character/?page=${pageNumber}`)
         return data
     }
 }
