@@ -25,3 +25,13 @@ export type TOnePageOfCharacters = {
     info: TPageInfo,
     results: TCharacter[]
 }
+
+
+export type TGetOnePageArguments = {
+    page: string,
+    name?: string | null,
+    status?: 'alive' | 'dead' | 'unknown' | null,
+    gender?: 'female' | 'male' | 'genderless' | 'unknown' | null,
+    species?: string | null,
+    type?: string | null
+}

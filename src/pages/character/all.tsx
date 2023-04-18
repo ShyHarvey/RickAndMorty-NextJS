@@ -26,7 +26,10 @@ const All: NextPage<Props> = ({ fallback, charactersData }) => {
                    для useSWR через пропсы в AllCharacters
                    
                    */}
-                <AllCharacters charactersInitialData={charactersData} />
+                <AllCharacters
+                // к сожалению пока что придётся отказаться от этой идеи
+                //  charactersInitialData={charactersData} 
+                />
             </SWRConfig>
         </>
     )
@@ -35,10 +38,10 @@ const All: NextPage<Props> = ({ fallback, charactersData }) => {
 export const getStaticProps: GetStaticProps<{ fallback: any, charactersData: TOnePageOfCharacters }> = async () => {
 
     //создаём fallback значение для серверного рендеринга первой страницы всех персонажей
-    const charactersFirstPage = (await CharactersService.GetOnePageOfCharacters())
+    const charactersFirstPage = (await CharactersService.GetOnePageOfCharacters(''))
 
     //создаём fallback значение для серверного рендеринга колличества персонажей в футере
-    const charactersInfo = (await CharactersService.GetOnePageOfCharacters()).info
+    const charactersInfo = (await CharactersService.GetOnePageOfCharacters('')).info
 
     //далее то же самое для локаций и эпизодов
     const locationsInfo = (await LocationsService.GetAllLocations()).info
