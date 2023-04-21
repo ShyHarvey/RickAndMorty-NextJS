@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps<{ characters: TCharacter[], fallback
   const characters = await CharactersService.GetSixRandomCharacters()
 
   //создаём fallback значение для серверного рендеринга колличества персонажей в футере
-  const charactersInfo = (await CharactersService.GetOnePageOfCharacters()).info
+  const charactersInfo = (await CharactersService.GetOnePageOfCharacters('')).info
 
   //далее то же самое для локаций и эпизодов
   const locationsInfo = (await LocationsService.GetAllLocations()).info

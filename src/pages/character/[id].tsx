@@ -12,8 +12,6 @@ interface Props {
 
 const CarPage: NextPage<Props> = ({ character }) => {
 
-    const { query } = useRouter()
-
     if (character === null) {
         return <p>Not found</p>
     }
@@ -32,7 +30,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-    const allCharacters = await CharactersService.GetOnePageOfCharacters()
+    const allCharacters = await CharactersService.GetOnePageOfCharacters('')
     return {
         paths: allCharacters.results.map(item => ({
             params: {
