@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import { GenderList } from './inputs/GenderList'
+import { useRouter } from 'next/router'
 
 const gender = [
     { id: 1, name: 'male' },
@@ -12,14 +13,14 @@ const gender = [
 export const CharacterSearchForm = () => {
 
     const [selectedGender, setSelectedGender] = useState(gender[0])
+    const router = useRouter()
+
 
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const params = new URLSearchParams(document.location.search)
-        params.set('gender', selectedGender.name)
-        params.set('page', '1')
-        window.history.replaceState({}, '', `?${params.toString()}`);
-        window.location.reload()
+        router.push({
+            query: { ...router.query, page: '1', gender: selectedGender.name },
+        })
     }
 
 
