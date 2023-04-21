@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { PersonCard } from "@/components/personCard/PersonCard";
 import { CharactersService } from '@/services/character.service'
-import type { TGetOnePageArguments, TOnePageOfCharacters } from "@/types/CharacterType";
+import type { TOnePageOfCharacters } from "@/types/CharacterType";
 import { useSearchParams } from 'next/navigation';
 import useSWR from 'swr'
 import { AxiosError } from 'axios';
@@ -34,9 +34,12 @@ export default function AllCharacters() {
 
 
     //сразу запрашиваем и кэшируем следующую страницу, чтобы избежать задержки и отображения самой первой страницы во время загрузки
-
     let nextPageQueryString = queryString
-    nextPageQueryString = nextPageQueryString.replace(/page=(\d+)/, `page=${Number(page) + 1}`);
+
+    //судя по всему при во время билда queryString = undefined, поэтому нужна проверка
+    if (typeof nextPageQueryString !== 'undefined') {
+        nextPageQueryString = nextPageQueryString.replace(/page=(\d+)/, `page=${Number(page) + 1}`);
+    }
 
     const { data: charactersDataNextPage } = useSWR(`charactersPage=${nextPageQueryString}`,
         async () => {
@@ -44,7 +47,6 @@ export default function AllCharacters() {
             const data = await CharactersService.GetOnePageOfCharacters(nextPageQueryString)
             return data
         },)
-
 
     const charactersArray = charactersData?.results
 
