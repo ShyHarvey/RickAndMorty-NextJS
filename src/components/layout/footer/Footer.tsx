@@ -9,7 +9,7 @@ export const Footer: React.FC<{}> = () => {
 
     const { data: charactersData } = useSWR('charactersInfo',
         async () => {
-            const data = (await CharactersService.GetOnePageOfCharacters()).info
+            const data = (await CharactersService.GetOnePageOfCharacters('')).info
             return data
         })
     const { data: locationsData } = useSWR('locationsInfo',
