@@ -46,13 +46,14 @@ export const Pagination = ({ totalPage, currentPage, nextPage }: {
                     >Previous</Link>
                 </li>
 
-                {pages.map((item, index) => <li key={index}>
-                    <Link className={classNames({
-                        "relative block rounded bg-transparent px-3 py-1.5 text-sm transition-all duration-300 text-white ": true,
-                        //не понимаю почему, но цвет активной страницы постоянно ломается
-                        "pointer-events-none bg-ram-300/40": +currentPage === item,
-                        "hover:bg-neutral-700": +currentPage !== item
-                    })}
+                {pages.map((item, index) => <li key={index}
+                    className={
+                        `relative block rounded bg-transparent px-3 py-1.5 text-sm transition-all duration-300 
+                        ${+currentPage === item && "pointer-events-none bg-white text-ram-950"}
+                        ${+currentPage !== item && "hover:bg-neutral-700 text-white"}`
+                    }
+                >
+                    <Link
                         href={nextPage.replace(/page=(\d+)/, `page=${item}`)}
                     >{item}</Link>
                 </li>
@@ -69,6 +70,6 @@ export const Pagination = ({ totalPage, currentPage, nextPage }: {
                     >Next</Link>
                 </li>
             </ul>
-        </nav>
+        </nav >
     )
 }
