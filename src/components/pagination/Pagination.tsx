@@ -49,7 +49,8 @@ export const Pagination = ({ totalPage, currentPage, nextPage }: {
                 {pages.map((item, index) => <li key={index}>
                     <Link className={classNames({
                         "relative block rounded bg-transparent px-3 py-1.5 text-sm transition-all duration-300 text-white ": true,
-                        "pointer-events-none bg-ram-300/20": +currentPage === item,
+                        //не понимаю почему, но цвет активной страницы постоянно ломается
+                        "pointer-events-none bg-ram-300/40": +currentPage === item,
                         "hover:bg-neutral-700": +currentPage !== item
                     })}
                         href={nextPage.replace(/page=(\d+)/, `page=${item}`)}
