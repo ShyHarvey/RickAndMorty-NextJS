@@ -28,11 +28,11 @@ export const CharacterSearchForm = () => {
 
 
     return (
-        <form onSubmit={(e) => onSubmitHandler(e)} className='flex items-end gap-3'>
+        <form onSubmit={(e) => onSubmitHandler(e)} className='flex flex-col items-end gap-3 md:flex-row'>
             <GenderList gender={gender} selectedGender={selectedGender} setSelectedGender={setSelectedGender} />
             <input value={name} onChange={(e) => setName(e.currentTarget.value)}
                 type='text' placeholder='Name'
-                className="relative flex-1 w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-pointer text-ram-900 sm:text-sm">
+                className="relative flex-1 w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-pointer md:w-1/2 text-ram-900 sm:text-sm">
             </input>
             <button type='submit' className='px-5 py-2 ml-4 text-sm font-medium text-white transition duration-150 ease-in-out rounded-md bg-ram-300/20 hover:bg-ram-300/40'>Search</button>
         </form>

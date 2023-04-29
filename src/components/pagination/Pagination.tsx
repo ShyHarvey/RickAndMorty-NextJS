@@ -36,7 +36,7 @@ export const Pagination = ({ totalPage, currentPage, nextPage }: {
 
     return (
         <nav className='m-5' aria-label="Page navigation example">
-            <ul className="flex list-style-none">
+            <ul className="flex flex-wrap items-center justify-center list-style-none">
                 <li>
                     <Link href={prevPageLink} className={classNames({
                         "relative block rounded bg-transparent px-3 py-1.5 text-sm transition-all duration-300 ": true,

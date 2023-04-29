@@ -27,6 +27,10 @@ export default function AllCharacters() {
         router.events.on('routeChangeComplete', handleRouteChange);
     }, [router])
 
+    if (page == null) {
+        //надо что-то придумать
+    }
+
     const { data: charactersData, error, isLoading } = useSWR<TOnePageOfCharacters, AxiosError>(`charactersPage=${queryString}`,
         async () => {
             const data = await CharactersService.GetOnePageOfCharacters(queryString)

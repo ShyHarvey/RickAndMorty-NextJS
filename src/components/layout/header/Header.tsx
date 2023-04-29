@@ -14,7 +14,7 @@ export const Header: React.FC<{}> = () => {
             </Link>
             <div className='flex items-center'>
                 <Link className={`mx-2 hover:text-red-400 ${pathname === '/favorites' ? 'text-red-400' : ''}`} href='/favorites'>Favorites</Link>
-                <Link className={`mx-2 hover:text-red-400 ${pathname === '/character/all' ? 'text-red-400' : ''}`} href='/character/all'>All characters</Link>
+                <Link className={`mx-2 hover:text-red-400 ${pathname === '/character/all' ? 'text-red-400' : ''}`} href='/character/all?page=1'>All characters</Link>
                 <Link className={`mx-2 hover:text-red-400 ${pathname === '/' ? 'text-red-400' : ''}`} href='/'>Home</Link>
             </div>
         </div>

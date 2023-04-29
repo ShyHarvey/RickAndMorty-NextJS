@@ -16,7 +16,7 @@ export const GenderList = ({ gender, selectedGender, setSelectedGender }: Props)
 
     return (
         <Listbox value={selectedGender} onChange={setSelectedGender}>
-            <div className="relative z-50 w-40">
+            <div className="relative z-50 w-full md:w-1/2">
                 <Listbox.Label>Gender</Listbox.Label>
                 <Listbox.Button className="relative flex-1 w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-pointer sm:text-sm">
                     <span className="block h-5 truncate text-ram-700">{selectedGender.name}</span>
