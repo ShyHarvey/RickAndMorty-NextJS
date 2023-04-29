@@ -6,7 +6,7 @@ import { FavoriteButton } from './FavoriteButton'
 
 
 
-export const PersonCard: React.FC<TCharacter> = React.memo<TCharacter>((CharacterData) => {
+export const PersonCard: React.FC<TCharacter> = (CharacterData) => {
 
     return (
         <div className='flex flex-col w-full max-w-2xl mx-4 overflow-hidden text-white transition ease-in-out h-fit rounded-xl bg-ram-500 md:flex-row md:w-132 md:h-56 md:m-0 hover:-translate-y-1 hover:scale-105'>
@@ -41,4 +41,4 @@ export const PersonCard: React.FC<TCharacter> = React.memo<TCharacter>((Characte
             </div>
         </div>
     )
-})
+}
