@@ -3,7 +3,7 @@ import Head from "next/head"
 import HomePage from '@/components/screens/home/Home'
 import type { TCharacter } from "@/types/CharacterType"
 import { CharactersService } from "@/services/character.service"
-import { SWRConfig } from 'swr'
+import { SWRConfig, preload } from 'swr'
 import { LocationsService } from '@/services/location.service'
 import { EpisodesService } from '@/services/episode.service'
 import { TPageInfo } from '@/types/PageInfoType'
@@ -17,6 +17,7 @@ type IndexFallback = {
 }
 
 const Home: NextPage<{ characters: TCharacter[], fallback: IndexFallback }> = ({ characters, fallback }) => {
+
   return <>
     <Head>
       <title>Home page</title>

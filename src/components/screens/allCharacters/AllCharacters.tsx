@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 
+import useSWR from 'swr'
+import { AxiosError } from 'axios';
+import { useRouter } from "next/router";
+import { useSearchParams } from 'next/navigation';
+
 import { Layout } from "@/components/layout/Layout";
 import { PersonCard } from "@/components/personCard/PersonCard";
 import { CharactersService } from '@/services/character.service'
-import type { TOnePageOfCharacters } from "@/types/CharacterType";
-import { useSearchParams } from 'next/navigation';
-import useSWR from 'swr'
-import { AxiosError } from 'axios';
 import { Pagination } from "@/components/pagination/Pagination";
 import { CharacterSearchForm } from "@/components/charactersSearchForm/CharacterSearchForm";
-import { useRouter } from "next/router";
+import type { TOnePageOfCharacters } from "@/types/CharacterType";
 
 
 export default function AllCharacters() {
@@ -33,7 +34,7 @@ export default function AllCharacters() {
         })
 
 
-    //сразу запрашиваем и кэшируем следующую страницу, чтобы избежать задержки и отображения самой первой страницы во время загрузки
+    //сразу запрашиваем и кэшируем следующую страницу
     let nextPageQueryString = queryString
 
     //судя по всему при во время билда queryString = undefined, поэтому нужна проверка

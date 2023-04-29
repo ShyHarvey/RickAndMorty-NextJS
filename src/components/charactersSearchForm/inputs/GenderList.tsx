@@ -17,9 +17,9 @@ export const GenderList = ({ gender, selectedGender, setSelectedGender }: Props)
     return (
         <Listbox value={selectedGender} onChange={setSelectedGender}>
             <div className="relative z-50 w-40">
-
-                <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-pointer sm:text-sm">
-                    <span className="block truncate text-ram-700">{selectedGender.name}</span>
+                <Listbox.Label>Gender</Listbox.Label>
+                <Listbox.Button className="relative flex-1 w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-pointer sm:text-sm">
+                    <span className="block h-5 truncate text-ram-700">{selectedGender.name}</span>
                     <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                         <ChevronUpDownIcon
                             className="w-5 h-5 text-gray-400"
@@ -45,7 +45,7 @@ export const GenderList = ({ gender, selectedGender, setSelectedGender }: Props)
                             >
                                 {({ selected }) => (
                                     <>
-                                        <span className={`block truncate ${selected ? 'font-bold' : 'font-normal'}`}>
+                                        <span className={`block h-5 truncate ${selected ? 'font-bold' : 'font-normal'}`}>
                                             {gender.name}
                                         </span>
                                         {selected &&
