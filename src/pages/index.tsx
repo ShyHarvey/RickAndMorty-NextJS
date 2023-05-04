@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps<{ characters: TCharacter[], fallback
         'episodesInfo': episodesInfo,
       }
     },
-    revalidate: 600
+    revalidate: 60000
   }
 }
 
