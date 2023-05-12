@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { TCharacter } from '@/types/CharacterType'
-import { FavoriteButton } from './FavoriteButton'
+import { FavoriteButton } from '../favoriteButton/FavoriteButton'
 
 
 
@@ -23,7 +23,10 @@ export const PersonCard: React.FC<TCharacter> = (CharacterData) => {
 
                     <Link href={`/character/${CharacterData.id}`} className='text-3xl font-bold hover:text-orange-400'>{CharacterData.name}</Link>
                     <span className='flex items-center text-base'>
-                        <span className='inline-block w-3 h-3 mr-2 bg-red-700 rounded-full'></span>
+                        <span className={`inline-block w-3 h-3 mr-2 shadow-sm  rounded-full
+                        ${CharacterData.status == 'Alive' && 'bg-green-700'}
+                        ${CharacterData.status == 'Dead' && 'bg-red-600'}
+                        ${CharacterData.status == 'unknown' && 'bg-white'}`}></span>
                         {CharacterData.status}-{CharacterData.species}
                     </span>
                 </div>

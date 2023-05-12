@@ -35,6 +35,7 @@ export const FavoriteButton: React.FC<{ CharacterData: TCharacter }> = ({ Charac
             onClick={() => handleHeartClick()}
             className={`cursor-pointer stroke-white  
                         ${currentCharacterIndex > -1 ? 'fill-white' : 'fill-none hover:fill-white/30'}`}
-            width={35} height={35} />
+            width={35} height={35}
+        />
     )
 }

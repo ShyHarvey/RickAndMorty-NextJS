@@ -57,21 +57,21 @@ export default function AllCharacters() {
 
     return (
 
-        <Layout>
-            <section className="flex flex-wrap justify-center gap-6 text-gray-400 bg-ram-700 body-font ">
-                <CharacterSearchForm />
-                {isLoading && <p className="flex flex-col items-center justify-center w-full mb-3 text-3xl font-bold h-96 animate-pulse">Loading...</p>}
-                {error?.isAxiosError ?
-                    <p className="flex flex-col items-center justify-center w-full mb-3 text-3xl font-bold h-96 animate-pulse">Not found</p>
-                    :
-                    <>
-                        {charactersData && <div className="flex flex-col items-center justify-center w-full mb-3">
-                            <Pagination totalPage={charactersData.info.pages} currentPage={page ? page : '1'} nextPage={`/character/all?${nextPageQueryString}`} />
-                        </div>}
-                        {charactersArray && charactersArray.map(item => <PersonCard key={item.id} {...item} />)}
-                    </>
-                }
-            </section>
-        </Layout>
+
+        <section className="flex flex-wrap justify-center gap-6 text-gray-400 bg-ram-700 body-font ">
+            <CharacterSearchForm />
+            {isLoading && <p className="flex flex-col items-center justify-center w-full mb-3 text-3xl font-bold h-96 animate-pulse">Loading...</p>}
+            {error?.isAxiosError ?
+                <p className="flex flex-col items-center justify-center w-full mb-3 text-3xl font-bold h-96 animate-pulse">Not found</p>
+                :
+                <>
+                    {charactersData && <div className="flex flex-col items-center justify-center w-full mb-3">
+                        <Pagination totalPage={charactersData.info.pages} currentPage={page ? page : '1'} nextPage={`/character/all?${nextPageQueryString}`} />
+                    </div>}
+                    {charactersArray && charactersArray.map(item => <PersonCard key={item.id} {...item} />)}
+                </>
+            }
+        </section>
+
     )
 }

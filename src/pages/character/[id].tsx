@@ -1,5 +1,6 @@
 import { Layout } from '@/components/layout/Layout'
 import { PersonCard } from '@/components/personCard/PersonCard'
+import { PersonPage } from '@/components/screens/personalPage/PersonalPage'
 import { CharactersService } from '@/services/character.service'
 import { TCharacter } from '@/types/CharacterType'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
@@ -17,11 +18,9 @@ const CarPage: NextPage<Props> = ({ character }) => {
     }
 
     return (
-        <Layout>
-            <div className='m-auto w-fit'>
-                <PersonCard {...character} />
-            </div>
-        </Layout>
+        <div className='mx-auto'>
+            <PersonPage {...character} />
+        </div>
     )
 }
 
