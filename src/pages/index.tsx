@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { GetStaticProps, NextPage } from 'next'
 import Head from "next/head"
 import HomePage from '@/components/screens/home/Home'
@@ -18,7 +19,7 @@ type IndexFallback = {
 }
 
 
-const Home: NextPage<{ characters: TCharacter[], fallback: IndexFallback }> = ({ characters, fallback }, ref: React.ForwardedRef<HTMLDivElement>) => {
+const Home = ({ characters, fallback }: { characters: TCharacter[], fallback: IndexFallback }, ref: React.ForwardedRef<HTMLDivElement>) => {
 
   return <>
     <Head>
@@ -34,7 +35,6 @@ const Home: NextPage<{ characters: TCharacter[], fallback: IndexFallback }> = ({
     </PageTransition>
   </>
 }
-
 
 export const getStaticProps: GetStaticProps<{ characters: TCharacter[], fallback: IndexFallback }> = async () => {
 
@@ -63,4 +63,4 @@ export const getStaticProps: GetStaticProps<{ characters: TCharacter[], fallback
 
 
 
-export default Home
+export default forwardRef(Home)

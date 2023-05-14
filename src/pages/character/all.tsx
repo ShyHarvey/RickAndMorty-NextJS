@@ -5,6 +5,7 @@ import { EpisodesService } from '@/services/episode.service'
 import { LocationsService } from '@/services/location.service'
 import { TPageInfo } from '@/types/PageInfoType'
 import { GetStaticProps, NextPage } from 'next'
+import { forwardRef } from 'react'
 import { SWRConfig } from 'swr'
 
 interface Props {
@@ -15,8 +16,7 @@ interface Props {
     }
 }
 
-const All: NextPage<Props> = ({ fallback }, ref: React.ForwardedRef<HTMLDivElement>) => {
-
+const All: NextPage<Props> = forwardRef(({ fallback }, ref: React.ForwardedRef<HTMLDivElement>) => {
     return (
         <PageTransition ref={ref}>
             <SWRConfig value={{ fallback }}>
@@ -24,7 +24,7 @@ const All: NextPage<Props> = ({ fallback }, ref: React.ForwardedRef<HTMLDivEleme
             </SWRConfig>
         </PageTransition>
     )
-}
+})
 
 export const getStaticProps: GetStaticProps<{ fallback: any }> = async () => {
 

@@ -2,8 +2,9 @@ import PageTransition from '@/components/pageTransition/PageTransition'
 import { FavoritesPage } from '@/components/screens/favorites/FavoritesPage'
 import { NextPage } from 'next'
 import Head from 'next/head'
+import { forwardRef } from 'react'
 
-type FavoritesPageRef = React.ForwardedRef<HTMLDivElement>
+
 interface Props { }
 const Favorites = (props: Props, ref: React.ForwardedRef<HTMLDivElement>) => {
     return <>
@@ -17,4 +18,4 @@ const Favorites = (props: Props, ref: React.ForwardedRef<HTMLDivElement>) => {
 
 }
 
-export default Favorites
+export default forwardRef(Favorites)

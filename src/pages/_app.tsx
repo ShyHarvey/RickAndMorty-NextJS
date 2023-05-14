@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const pageKey = router.pathname
   return (
     <Layout>
-      <AnimatePresence initial={false} mode="wait">
+      <AnimatePresence mode="popLayout">
         <Component key={pageKey} {...pageProps} />
       </AnimatePresence>
     </Layout>

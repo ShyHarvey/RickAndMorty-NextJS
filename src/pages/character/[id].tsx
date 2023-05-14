@@ -7,13 +7,14 @@ import { TCharacter } from '@/types/CharacterType'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
+import { forwardRef } from 'react'
 
 type PersonalPageRef = React.ForwardedRef<HTMLDivElement>
 interface Props {
     character: TCharacter | null
 }
 
-const CarPage: NextPage<Props> = ({ character }, ref: PersonalPageRef) => {
+const CarPage: NextPage<Props> = forwardRef(({ character }, ref: PersonalPageRef) => {
 
     if (character === null) {
         return <p>Not found</p>
@@ -28,7 +29,7 @@ const CarPage: NextPage<Props> = ({ character }, ref: PersonalPageRef) => {
 
 
     )
-}
+})
 
 interface Params extends ParsedUrlQuery {
     id: string
