@@ -14,7 +14,7 @@ interface Props {
     character: TCharacter | null
 }
 
-const CarPage: NextPage<Props> = forwardRef(({ character }, ref: PersonalPageRef) => {
+const CarPage = ({ character }: Props, ref: PersonalPageRef) => {
 
     if (character === null) {
         return <p>Not found</p>
@@ -29,7 +29,7 @@ const CarPage: NextPage<Props> = forwardRef(({ character }, ref: PersonalPageRef
 
 
     )
-})
+}
 
 interface Params extends ParsedUrlQuery {
     id: string
@@ -60,4 +60,4 @@ export const getStaticProps: GetStaticProps<{ character: TCharacter | null }> = 
 }
 
 
-export default CarPage
+export default forwardRef(CarPage) 

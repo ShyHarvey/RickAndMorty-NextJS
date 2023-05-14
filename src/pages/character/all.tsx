@@ -16,7 +16,7 @@ interface Props {
     }
 }
 
-const All: NextPage<Props> = forwardRef(({ fallback }, ref: React.ForwardedRef<HTMLDivElement>) => {
+const All = ({ fallback }: Props, ref: React.ForwardedRef<HTMLDivElement>) => {
     return (
         <PageTransition ref={ref}>
             <SWRConfig value={{ fallback }}>
@@ -24,7 +24,7 @@ const All: NextPage<Props> = forwardRef(({ fallback }, ref: React.ForwardedRef<H
             </SWRConfig>
         </PageTransition>
     )
-})
+}
 
 export const getStaticProps: GetStaticProps<{ fallback: any }> = async () => {
 
@@ -47,4 +47,4 @@ export const getStaticProps: GetStaticProps<{ fallback: any }> = async () => {
     }
 }
 
-export default All
+export default forwardRef(All)
