@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
-  const pageKey = router.asPath
+  const pageKey = router.pathname
   return (
     <Layout>
       <AnimatePresence initial={false} mode="wait">

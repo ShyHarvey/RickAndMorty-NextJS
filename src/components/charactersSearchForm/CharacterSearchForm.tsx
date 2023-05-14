@@ -21,8 +21,8 @@ export const CharacterSearchForm = () => {
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         router.push({
-            query: { ...router.query, page: '1', gender: selectedGender.name, name: name },
-        })
+            query: { ...router.query, page: '1', gender: selectedGender.name, name: name }
+        }, '', { scroll: false })
     }
 
 

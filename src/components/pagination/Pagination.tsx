@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import classNames from 'classnames'
 
+
 export const Pagination = ({ totalPage, currentPage, nextPage }: {
     totalPage: number,
     currentPage: string,

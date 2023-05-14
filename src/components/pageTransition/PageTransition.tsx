@@ -9,15 +9,15 @@ function PageTransition({ children, ...rest }: PageTransitionProps, ref: PageTra
     const inTheCenter = { x: 0 }
     const onTheLeft = { x: '-100%' }
 
-    const transition = { duration: 0.15, ease: 'easeInOut' }
+    const transition = { duration: 0.25, ease: 'easeInOut' }
 
     return (
         <motion.div
             className='max-h-full'
             ref={ref}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={onTheRight}
+            animate={inTheCenter}
+            exit={onTheLeft}
             transition={transition}
             {...rest}
         >

@@ -20,10 +20,10 @@ export default function AllCharacters() {
 
     const [queryString, setQueryString] = useState(router.asPath.split('?')[1])
 
+    const handleRouteChange = (url: string) => {
+        setQueryString(url.split('?')[1]);
+    };
     useEffect(() => {
-        const handleRouteChange = (url: string) => {
-            setQueryString(url.split('?')[1]);
-        };
         router.events.on('routeChangeComplete', handleRouteChange);
     }, [router])
 
