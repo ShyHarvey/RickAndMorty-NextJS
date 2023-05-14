@@ -4,7 +4,6 @@ import { LocationsService } from '@/services/location.service'
 import Link from 'next/link'
 import React from 'react'
 import useSWR from 'swr/immutable'
-import { preload } from 'swr'
 
 export const Footer: React.FC<{}> = () => {
 
@@ -28,7 +27,7 @@ export const Footer: React.FC<{}> = () => {
     return (
         <div className='flex-shrink-0 h-40 p-4 bg-ram-900'>
             <div className='flex flex-col items-center justify-center gap-5 mt-4 md:flex-row'>
-                <Link className='text-ram-300 hover:text-orange-500' href={'/character/all?page=1'}
+                <Link className='text-ram-300 hover:text-orange-500' href={'/character/all?page=1'} scroll={false}
                 // onMouseOver={() => preload(`charactersPage=1`, async () => {
                 //     const data = await CharactersService.GetOnePageOfCharacters('page=1')
                 //     return data
@@ -41,7 +40,7 @@ export const Footer: React.FC<{}> = () => {
                         </span>
                     </p>
                 </Link>
-                <Link className='text-ram-300 hover:text-orange-500' href={'/'}>
+                <Link className='text-ram-300 hover:text-orange-500' href={'/'} scroll={false}>
                     <p className='font-bold text-md'>
                         LOCATIONS:&nbsp;
                         <span>
@@ -49,7 +48,7 @@ export const Footer: React.FC<{}> = () => {
                         </span>
                     </p>
                 </Link>
-                <Link className='text-ram-300 hover:text-orange-500' href={'/'}>
+                <Link className='text-ram-300 hover:text-orange-500' href={'/'} scroll={false}>
                     <p className='font-bold text-md '>
                         EPISODES:&nbsp;
                         <span >

@@ -1,8 +1,8 @@
+import React from 'react'
 import { Layout } from '@/components/layout/Layout'
 import { PersonCard } from '@/components/personCard/PersonCard'
 import useLocalStorage from '@/hooks/useLocalStorage'
 import { TCharacter } from '@/types/CharacterType'
-import React from 'react'
 
 export const FavoritesPage: React.FC<{}> = () => {
     const [favorites] = useLocalStorage<TCharacter[]>('favorites')

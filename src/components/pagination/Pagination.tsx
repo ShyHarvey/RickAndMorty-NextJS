@@ -38,7 +38,7 @@ export const Pagination = ({ totalPage, currentPage, nextPage }: {
         <nav className='m-5' aria-label="Page navigation example">
             <ul className="flex flex-wrap items-center justify-center list-style-none">
                 <li>
-                    <Link href={prevPageLink} className={classNames({
+                    <Link href={prevPageLink} scroll={false} className={classNames({
                         "relative block rounded bg-transparent px-3 py-1.5 text-sm transition-all duration-300 ": true,
                         "pointer-events-none text-neutral-500": +currentPage === 1,
                         " text-white hover:bg-neutral-700": +currentPage !== 1
@@ -55,6 +55,7 @@ export const Pagination = ({ totalPage, currentPage, nextPage }: {
                 >
                     <Link
                         href={nextPage.replace(/page=(\d+)/, `page=${item}`)}
+                        scroll={false}
                     >{item}</Link>
                 </li>
                 )}
@@ -67,6 +68,7 @@ export const Pagination = ({ totalPage, currentPage, nextPage }: {
                             "text-white hover:bg-neutral-700": +currentPage < totalPage
                         })}
                         href={nextPage}
+                        scroll={false}
                     >Next</Link>
                 </li>
             </ul>

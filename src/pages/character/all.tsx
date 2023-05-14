@@ -1,3 +1,4 @@
+import PageTransition from '@/components/pageTransition/PageTransition'
 import AllCharacters from '@/components/screens/allCharacters/AllCharacters'
 import { CharactersService } from '@/services/character.service'
 import { EpisodesService } from '@/services/episode.service'
@@ -14,13 +15,14 @@ interface Props {
     }
 }
 
-const All: NextPage<Props> = ({ fallback }) => {
+const All: NextPage<Props> = ({ fallback }, ref: React.ForwardedRef<HTMLDivElement>) => {
+
     return (
-        <>
+        <PageTransition ref={ref}>
             <SWRConfig value={{ fallback }}>
                 <AllCharacters />
             </SWRConfig>
-        </>
+        </PageTransition>
     )
 }
 

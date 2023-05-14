@@ -35,16 +35,16 @@ export const PersonPage: React.FC<TCharacter> = (CharacterData) => {
                 </div>
                 <div>
                     <p className='text-ram-300'>Last known location:</p>
-                    <p>{CharacterData.location.name}</p>
+                    <p>{CharacterData?.location?.name}</p>
                 </div>
                 <div>
                     <p className='text-ram-300'>First seen in:</p>
-                    <p>{CharacterData.origin.name}</p>
+                    <p>{CharacterData?.origin?.name}</p>
                 </div>
                 <div>
                     <p className='text-ram-300'>Episodes:</p>
                     <div className='flex flex-col'>
-                        {CharacterData.episode.map((item, index) =>
+                        {CharacterData?.episode?.map((item, index) =>
                             <Link className='text-base md:text-2xl hover:text-orange-500' key={index} target='_blank' href={item}>{item}</Link>
                         )}
                     </div>

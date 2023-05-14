@@ -1,4 +1,5 @@
 import { Layout } from '@/components/layout/Layout'
+import PageTransition from '@/components/pageTransition/PageTransition'
 import { PersonCard } from '@/components/personCard/PersonCard'
 import { PersonPage } from '@/components/screens/personalPage/PersonalPage'
 import { CharactersService } from '@/services/character.service'
@@ -7,20 +8,25 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { ParsedUrlQuery } from 'querystring'
 
+type PersonalPageRef = React.ForwardedRef<HTMLDivElement>
 interface Props {
     character: TCharacter | null
 }
 
-const CarPage: NextPage<Props> = ({ character }) => {
+const CarPage: NextPage<Props> = ({ character }, ref: PersonalPageRef) => {
 
     if (character === null) {
         return <p>Not found</p>
     }
 
     return (
-        <div className='mx-auto'>
-            <PersonPage {...character} />
-        </div>
+        <PageTransition ref={ref}>
+            <div className='mx-auto'>
+                <PersonPage {...character} />
+            </div>
+        </PageTransition>
+
+
     )
 }
 

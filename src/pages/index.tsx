@@ -7,6 +7,7 @@ import { SWRConfig, preload } from 'swr'
 import { LocationsService } from '@/services/location.service'
 import { EpisodesService } from '@/services/episode.service'
 import { TPageInfo } from '@/types/PageInfoType'
+import PageTransition from '@/components/pageTransition/PageTransition'
 
 
 //тип для fallback, за полчаса ничего лучше не придумал, зато не any
@@ -16,7 +17,8 @@ type IndexFallback = {
   episodesInfo: TPageInfo;
 }
 
-const Home: NextPage<{ characters: TCharacter[], fallback: IndexFallback }> = ({ characters, fallback }) => {
+
+const Home: NextPage<{ characters: TCharacter[], fallback: IndexFallback }> = ({ characters, fallback }, ref: React.ForwardedRef<HTMLDivElement>) => {
 
   return <>
     <Head>
@@ -25,9 +27,11 @@ const Home: NextPage<{ characters: TCharacter[], fallback: IndexFallback }> = ({
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <SWRConfig value={{ fallback }}>
-      <HomePage characters={characters} />
-    </SWRConfig>
+    <PageTransition ref={ref}>
+      <SWRConfig value={{ fallback }}>
+        <HomePage characters={characters} />
+      </SWRConfig>
+    </PageTransition>
   </>
 }
 
