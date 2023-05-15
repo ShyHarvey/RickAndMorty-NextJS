@@ -17,7 +17,7 @@ export const FavoritesPage: React.FC<{}> = () => {
 
 
     return (
-        <section className="flex justify-between w-full text-gray-400 bg-ram-700 body-font">
+        <section className="flex justify-around w-full text-gray-400 bg-ram-700 body-font">
             <div className='flex flex-[3-1] justify-center flex-wrap gap-4'>
                 <AnimatePresence>
                     {items.length ? items.map(item =>
@@ -36,11 +36,16 @@ export const FavoritesPage: React.FC<{}> = () => {
                 values={favorites || []}
                 onReorder={setFavorites}
             >
-                {favorites?.length ? favorites.map(item =>
-                    <Reorder.Item as='div' value={item} key={item.id}>
-                        <MSmallFavoritesCard {...item} />
-                    </Reorder.Item>
-                ) :
+                {favorites?.length ?
+                    <>
+                        <p>grab it &#8595;</p>
+                        {favorites.map(item =>
+                            <Reorder.Item whileDrag={{ scale: 1.1 }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.1 }} as='div' value={item} key={item.id}>
+                                <MSmallFavoritesCard {...item} />
+                            </Reorder.Item>
+                        )}
+                    </>
+                    :
                     <p className="flex flex-col items-center justify-center w-full mb-3 text-3xl font-bold h-96 animate-pulse">Favorites is empty</p>
                 }
             </Reorder.Group>
