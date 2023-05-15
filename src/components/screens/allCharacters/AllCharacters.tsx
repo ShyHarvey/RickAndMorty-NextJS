@@ -5,11 +5,11 @@ import { AxiosError } from 'axios';
 import { useRouter } from "next/router";
 import { useSearchParams } from 'next/navigation';
 
-import { Layout } from "@/components/layout/Layout";
 import { PersonCard } from "@/components/personCard/PersonCard";
 import { CharactersService } from '@/services/character.service'
 import { Pagination } from "@/components/pagination/Pagination";
 import { CharacterSearchForm } from "@/components/charactersSearchForm/CharacterSearchForm";
+import { AnimatePresence } from "framer-motion";
 import type { TOnePageOfCharacters } from "@/types/CharacterType";
 
 
@@ -36,7 +36,6 @@ export default function AllCharacters() {
             const data = await CharactersService.GetOnePageOfCharacters(queryString)
             return data
         })
-
 
     //сразу запрашиваем и кэшируем следующую страницу
     let nextPageQueryString = queryString
@@ -68,7 +67,9 @@ export default function AllCharacters() {
                     {charactersData && <div className="flex flex-col items-center justify-center w-full mb-3">
                         <Pagination totalPage={charactersData.info.pages} currentPage={page ? page : '1'} nextPage={`/character/all?${nextPageQueryString}`} />
                     </div>}
-                    {charactersArray && charactersArray.map(item => <PersonCard key={item.id} {...item} />)}
+                    <AnimatePresence initial={false}>
+                        {charactersArray?.map(item => <PersonCard key={item.id} {...item} />)}
+                    </AnimatePresence>
                 </>
             }
         </section>

@@ -8,7 +8,7 @@ export default function useLocalStorage<T>(key: string, options?: SWRConfigurati
 
     const setLocalStorage = (newValue: T) => {
         localStorage.setItem(key, JSON.stringify(newValue));
-        mutate(newValue, false);
+        mutate(newValue);
     };
 
     return [data, setLocalStorage];

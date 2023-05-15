@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -7,7 +7,7 @@ import type { TCharacter } from '@/types/CharacterType'
 
 
 
-export const PersonCard: React.FC<TCharacter> = (CharacterData) => {
+export const PersonCard = forwardRef((CharacterData: TCharacter, ref: React.ForwardedRef<HTMLDivElement>) => {
 
     return (
         <motion.div
@@ -63,4 +63,7 @@ export const PersonCard: React.FC<TCharacter> = (CharacterData) => {
             </div>
         </motion.div>
     )
-}
+})
+
+
+export const MPersonCard = motion(PersonCard, { forwardMotionProps: true })
