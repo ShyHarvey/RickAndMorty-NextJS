@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+#I highly recommend opening it on the desktop if you want to see all the chips and animations
+
 ## Getting Started
 
 First, run the development server:
