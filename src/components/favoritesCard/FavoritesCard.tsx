@@ -7,7 +7,7 @@ import type { TCharacter } from '@/types/CharacterType'
 
 
 
-export const FavoritesCard = forwardRef((CharacterData: TCharacter, ref: React.ForwardedRef<HTMLDivElement>) => {
+export const FavoritesCard = (CharacterData: TCharacter, ref: React.ForwardedRef<HTMLDivElement>) => {
 
     return (
         <motion.div
@@ -32,6 +32,6 @@ export const FavoritesCard = forwardRef((CharacterData: TCharacter, ref: React.F
             </div>
         </motion.div >
     )
-})
+}
 
-export const MFavoritesCard = motion(FavoritesCard, { forwardMotionProps: true })
+export const MFavoritesCard = motion(forwardRef(FavoritesCard), { forwardMotionProps: true })

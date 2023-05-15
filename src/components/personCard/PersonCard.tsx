@@ -7,7 +7,7 @@ import type { TCharacter } from '@/types/CharacterType'
 
 
 
-export const PersonCard = forwardRef((CharacterData: TCharacter, ref: React.ForwardedRef<HTMLDivElement>) => {
+export const PersonCard = (CharacterData: TCharacter, ref: React.ForwardedRef<HTMLDivElement>) => {
 
     return (
         <motion.div
@@ -63,7 +63,7 @@ export const PersonCard = forwardRef((CharacterData: TCharacter, ref: React.Forw
             </div>
         </motion.div>
     )
-})
+}
 
 
-export const MPersonCard = motion(PersonCard, { forwardMotionProps: true })
+export const MPersonCard = motion(forwardRef(PersonCard), { forwardMotionProps: true })
